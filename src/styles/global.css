@@ -1,7 +1,15 @@
 @import 'tailwindcss';
 
-.blog-content {
+.rich-text {
   h1 {
     @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  p {
+    @apply text-base font-medium font-serif leading-8;
   }
 }
