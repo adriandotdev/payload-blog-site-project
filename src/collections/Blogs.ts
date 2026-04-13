@@ -1,4 +1,5 @@
-import { FixedToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
+import { Code } from '@/blocks/Code/config'
+import { BlocksFeature, FixedToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { CollectionConfig } from 'payload'
 RichText
@@ -77,7 +78,11 @@ export const Blogs: CollectionConfig = {
               name: 'Content',
               label: 'Content',
               editor: lexicalEditor({
-                features: ({ defaultFeatures }) => [...defaultFeatures, FixedToolbarFeature()],
+                features: ({ defaultFeatures }) => [
+                  ...defaultFeatures,
+                  FixedToolbarFeature(),
+                  BlocksFeature({ blocks: [Code] }),
+                ],
               }),
               required: true,
             },
