@@ -18,6 +18,11 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    livePreview: {
+      url: ({ req, data, collectionConfig, locale }) =>
+        `${req.protocol}//${req.host}/blogs/draft/${data.slug}`, // Localization query param
+      collections: ['blogs'],
+    },
   },
   collections: [Users, Media, Blogs],
   editor: lexicalEditor(),

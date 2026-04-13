@@ -1,15 +1,27 @@
 @import 'tailwindcss';
 
+@theme {
+  --font-poppins: 'Poppins', sans-serif;
+}
+
 .rich-text {
   h1 {
-    @apply text-3xl;
+    @apply text-3xl font-bold;
   }
 
   h2 {
-    @apply text-2xl;
+    @apply text-2xl font-semibold mt-2;
   }
 
   p {
-    @apply text-base font-medium font-serif leading-8;
+    @apply text-base font-medium font-serif leading-8 mt-2;
+  }
+
+  ul {
+    @apply list-disc list-inside mt-2 pl-8;
+  }
+
+  ol {
+    @apply list-decimal list-inside mt-2 pl-8;
   }
 }

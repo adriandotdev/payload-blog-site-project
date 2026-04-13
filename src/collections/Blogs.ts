@@ -7,7 +7,41 @@ export const Blogs: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
   },
+  versions: {
+    drafts: {
+      autosave: {
+        interval: 800,
+      },
+    },
+  },
+  hooks: {
+    beforeChange: [
+      ({ data, operation, originalDoc }) => {
+        const isPublishing =
+          data._status === 'published' &&
+          (operation === 'create' || originalDoc?._status !== 'published')
+
+        if (isPublishing && !data.publishedAt) {
+          data.publishedAt = new Date().toISOString()
+        }
+
+        return data
+      },
+    ],
+  },
   fields: [
+    {
+      name: 'publishedAt',
+      type: 'date',
+      label: 'Published At',
+      admin: {
+        position: 'sidebar',
+        readOnly: true,
+        date: {
+          displayFormat: 'MMM d, yyyy',
+        },
+      },
+    },
     {
       type: 'tabs',
       tabs: [

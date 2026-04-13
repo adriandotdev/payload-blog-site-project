@@ -1,15 +1,17 @@
 import payloadConfig from '@/payload.config'
 
 import { getPayload } from 'payload'
-import { BlogContent } from '../_components/BlogContent'
+import { BlogContent } from '../../_components/BlogContent'
+import { RefreshRouteOnSave } from '../../_components/RefreshRouteOnSave'
 
-export default async function Blog({ params }: { params: Promise<{ slug: string }> }) {
+export default async function DraftBlog({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   console.log(slug)
   const payload = await getPayload({ config: payloadConfig })
 
   const result = await payload.find({
     collection: 'blogs',
+    draft: true,
     where: {
       slug: {
         equals: slug,
@@ -22,6 +24,7 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
 
   return (
     <div>
+      <RefreshRouteOnSave />
       <BlogContent blog={blog} />
     </div>
   )

@@ -169,6 +169,7 @@ export interface Media {
  */
 export interface Blog {
   id: number;
+  publishedAt?: string | null;
   title: string;
   slug: string;
   author: number | User;
@@ -189,6 +190,7 @@ export interface Blog {
   };
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -313,12 +315,14 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "blogs_select".
  */
 export interface BlogsSelect<T extends boolean = true> {
+  publishedAt?: T;
   title?: T;
   slug?: T;
   author?: T;
   Content?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
