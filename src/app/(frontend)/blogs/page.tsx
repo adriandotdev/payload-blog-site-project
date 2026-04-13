@@ -7,7 +7,6 @@ import { getPayload } from 'payload'
 export default async function BlogsPage() {
   const payload = await getPayload({ config })
 
-  // Fetch published blog posts, limit to 10, sort by newest first
   const { docs: posts } = await payload.find({
     collection: 'blogs',
     where: { _status: { equals: 'published' } },
@@ -26,7 +25,7 @@ export default async function BlogsPage() {
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-10">Blog Posts</h1>
+      <h1 className="text-4xl font-bold mb-10 text-slate-900">Blog Posts</h1>
       {posts.length === 0 && <p className="text-gray-500">No posts found.</p>}
       <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => {
@@ -73,7 +72,7 @@ export default async function BlogsPage() {
                   )}
                   <div className="absolute inset-0 group-hover:bg-black/50 group-hover:scale-105 transition-all duration-300">
                     <h1 className="font-semibold text-xl absolute opacity-0 top-full group-hover:top-1/2 left-1/2 -translate-x-1/2 transition-all duration-300 group-hover:opacity-100 text-white">
-                      Read Now
+                      Read More
                     </h1>
                   </div>
                 </div>

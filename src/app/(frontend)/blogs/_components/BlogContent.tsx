@@ -25,7 +25,9 @@ export const BlogContent = ({ blog }: { blog: Blog }) => {
       <div className="max-w-2xl mt-8">
         <div>
           {blog?.title && (
-            <h1 className="font-bold text-3xl lg:text-4xl wrap-break-word">{blog.title}</h1>
+            <h1 className="font-bold text-3xl lg:text-4xl wrap-break-word leading-14 text-slate-900 dark:text-white">
+              {blog.title}
+            </h1>
           )}
           <div className="flex flex-col-reverse gap-2 my-10 lg:flex-row lg:gap-8">
             <div className="flex items-center gap-2">
