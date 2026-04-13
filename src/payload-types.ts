@@ -125,6 +125,8 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: number;
+  name?: string | null;
+  profilePhoto?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -187,6 +189,14 @@ export interface Media {
       filesize?: number | null;
       filename?: string | null;
     };
+    profile?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
   };
 }
 /**
@@ -195,11 +205,11 @@ export interface Media {
  */
 export interface Blog {
   id: number;
-  publishedAt?: string | null;
   title: string;
   slug: string;
   author: number | User;
   heroImage?: (number | null) | Media;
+  publishedAt?: string | null;
   Content: {
     root: {
       type: string;
@@ -302,6 +312,8 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  name?: T;
+  profilePhoto?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -369,6 +381,16 @@ export interface MediaSelect<T extends boolean = true> {
               filesize?: T;
               filename?: T;
             };
+        profile?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
       };
 }
 /**
@@ -376,11 +398,11 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "blogs_select".
  */
 export interface BlogsSelect<T extends boolean = true> {
-  publishedAt?: T;
   title?: T;
   slug?: T;
   author?: T;
   heroImage?: T;
+  publishedAt?: T;
   Content?: T;
   updatedAt?: T;
   createdAt?: T;

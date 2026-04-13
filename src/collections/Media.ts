@@ -32,6 +32,12 @@ export const Media: CollectionConfig = {
         height: 600,
         position: 'centre',
       },
+      {
+        name: 'profile',
+        width: 144,
+        height: 144,
+        position: 'centre',
+      },
     ],
   },
 }

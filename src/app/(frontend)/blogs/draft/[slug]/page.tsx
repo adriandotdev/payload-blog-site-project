@@ -19,7 +19,7 @@ export default async function DraftBlog({ params }: { params: Promise<{ slug: st
     },
   })
 
-  console.log(result.docs[0]?.heroImage)
+  // console.log(result.docs[0]?.author)
   const blog = result.docs[0]
 
   return (

@@ -33,18 +33,6 @@ export const Blogs: CollectionConfig = {
   },
   fields: [
     {
-      name: 'publishedAt',
-      type: 'date',
-      label: 'Published At',
-      admin: {
-        position: 'sidebar',
-        readOnly: true,
-        date: {
-          displayFormat: 'MMM d, yyyy',
-        },
-      },
-    },
-    {
       type: 'tabs',
       tabs: [
         {
@@ -72,6 +60,18 @@ export const Blogs: CollectionConfig = {
               type: 'upload',
               relationTo: 'media',
               name: 'heroImage',
+            },
+            {
+              name: 'publishedAt',
+              type: 'date',
+              label: 'Published At',
+              admin: {
+                position: 'sidebar',
+                readOnly: true,
+                date: {
+                  displayFormat: 'MMM d, yyyy',
+                },
+              },
             },
           ],
         },
