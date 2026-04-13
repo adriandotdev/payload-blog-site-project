@@ -2,6 +2,7 @@ import { FixedToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import { CollectionConfig } from 'payload'
 RichText
+
 export const Blogs: CollectionConfig = {
   slug: 'blogs',
   admin: {

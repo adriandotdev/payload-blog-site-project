@@ -8,7 +8,7 @@ export const BlogContent = ({ blog }: { blog: Blog }) => {
     <div className="blog-content flex justify-center px-8 py-12 ">
       <div className="max-w-2xl">
         <div>
-          <h1 className="font-bold text-3xl lg:text-4xl">{blog.title}</h1>
+          <h1 className="font-bold text-3xl lg:text-4xl wrap-break-word">{blog.title}</h1>
           <div className="flex flex-col-reverse gap-2 my-10 lg:flex-row lg:gap-8">
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 rounded-full bg-gray-200" />
