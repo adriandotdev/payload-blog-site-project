@@ -6,7 +6,7 @@ import { RefreshRouteOnSave } from '../../_components/RefreshRouteOnSave'
 
 export default async function DraftBlog({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  console.log(slug)
+
   const payload = await getPayload({ config: payloadConfig })
 
   const result = await payload.find({
@@ -19,7 +19,7 @@ export default async function DraftBlog({ params }: { params: Promise<{ slug: st
     },
   })
 
-  console.log(result.docs)
+  console.log(result.docs[0]?.heroImage)
   const blog = result.docs[0]
 
   return (

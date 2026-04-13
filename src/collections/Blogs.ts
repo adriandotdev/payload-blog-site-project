@@ -68,6 +68,11 @@ export const Blogs: CollectionConfig = {
               relationTo: 'users',
               required: true,
             },
+            {
+              type: 'upload',
+              relationTo: 'media',
+              name: 'heroImage',
+            },
           ],
         },
         {
