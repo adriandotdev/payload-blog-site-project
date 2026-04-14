@@ -18,10 +18,26 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    components: {
+      graphics: {
+        Icon: '/components/Icon',
+        Logo: '/components/Logo',
+      },
+    },
     livePreview: {
       url: ({ req, data, collectionConfig, locale }) =>
         `${req.protocol}//${req.host}/blogs/draft/${data.slug}`, // Localization query param
       collections: ['blogs'],
+    },
+    meta: {
+      titleSuffix: '- Adrian.Dev',
+      icons: [
+        {
+          rel: 'icon',
+          type: 'image/svg+xml',
+          url: 'https://api.dicebear.com/9.x/shapes/svg?seed=Amaya',
+        },
+      ],
     },
   },
   collections: [Users, Media, Blogs],

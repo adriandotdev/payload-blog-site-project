@@ -1,0 +1,6 @@
+// Reset browser default list styles that leak in because Tailwind preflight is skipped in admin
+.collections__card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

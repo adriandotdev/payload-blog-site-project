@@ -43,6 +43,7 @@ export const Blogs: CollectionConfig = {
               name: 'title',
               label: 'Title',
               required: true,
+              defaultValue: '[Untitled]',
             },
             {
               type: 'text',
