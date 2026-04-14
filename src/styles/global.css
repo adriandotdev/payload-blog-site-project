@@ -30,3 +30,7 @@
     @apply list-decimal list-inside mt-2 pl-8;
   }
 }
+
+.dark body {
+  @apply bg-gray-950 text-white;
+}

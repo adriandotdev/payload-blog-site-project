@@ -1,4 +1,4 @@
-import { User } from '@/payload-types'
+import { Media, User } from '@/payload-types'
 import config from '@/payload.config'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -25,17 +25,16 @@ export default async function BlogsPage() {
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-10 text-slate-900">Blog Posts</h1>
+      <h1 className="text-4xl font-bold mb-10 text-slate-900 dark:text-slate-50">
+        Welcome to my Blog Page!
+      </h1>
       {posts.length === 0 && <p className="text-gray-500">No posts found.</p>}
       <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => {
           const image = typeof post.heroImage === 'object' ? post.heroImage : null
           const cardImage = image?.sizes?.card?.url ?? image?.url ?? null
           const alt = image?.alt ?? post.title ?? ''
-          const authorObj = typeof post.author === 'object' ? (post.author as User) : null
-          const profileMedia =
-            typeof authorObj?.profilePhoto === 'object' ? authorObj.profilePhoto : null
-          const profilePhoto = profileMedia?.sizes?.profile?.url ?? profileMedia?.url ?? null
+          const profilePhoto = ((post.author as User).profilePhoto as Media).sizes?.profile?.url
 
           return (
             <li key={post.id} className="group">
@@ -89,7 +88,7 @@ export default async function BlogsPage() {
                       year: 'numeric',
                     })}
                   </span>
-                  <h2 className="text-lg font-semibold leading-snug group-hover:text-blue-600 transition-colors">
+                  <h2 className="text-lg font-semibold leading-snug group-hover:text-blue-600 transition-colors dark:group-hover:text-yellow-500">
                     {post.title}
                   </h2>
 
@@ -103,7 +102,7 @@ export default async function BlogsPage() {
                         className="rounded-full"
                       />
                     )}
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-500 dark:text-slate-50">
                       {typeof post.author === 'object' && post.author?.email
                         ? post.author.name
                         : 'Unknown Author'}

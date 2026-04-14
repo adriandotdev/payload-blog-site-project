@@ -2,6 +2,7 @@ import '@/styles/global.css'
 import { ThemeProvider } from 'next-themes'
 import { Poppins } from 'next/font/google'
 import React from 'react'
+import LayoutFooter from './_components/LayoutFooter'
 import LayoutHeader from './_components/LayoutHeader'
 
 export const metadata = {
@@ -18,10 +19,11 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   return (
     <html lang="en" className={`${poppins.className}`} suppressHydrationWarning>
-      <body>
+      <body className="flex flex-col justify-between min-h-dvh">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <LayoutHeader />
           <main>{children}</main>
+          <LayoutFooter />
         </ThemeProvider>
       </body>
     </html>
