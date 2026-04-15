@@ -17,6 +17,19 @@ export const Blogs: CollectionConfig = {
     },
   },
   hooks: {
+    beforeValidate: [
+      ({ data }) => {
+        if (data && data.title) {
+          const base = data.title
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-|-$/g, '')
+          const random = Math.floor(1000 + Math.random() * 9000)
+          data.slug = `${base}-${random}`
+        }
+        return data
+      },
+    ],
     beforeChange: [
       ({ data, operation, originalDoc }) => {
         const isPublishing =
@@ -50,6 +63,8 @@ export const Blogs: CollectionConfig = {
               name: 'slug',
               label: 'Slug',
               required: true,
+              unique: true,
+              index: true,
             },
             {
               type: 'relationship',
