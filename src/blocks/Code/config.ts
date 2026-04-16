@@ -19,6 +19,9 @@ export const Code: Block = {
         { label: 'CSS', value: 'css' },
         { label: 'HTML', value: 'html' },
         { label: 'Python', value: 'python' },
+        { label: 'Docker', value: 'docker' },
+        { label: 'Bash', value: 'bash' },
+        { label: 'JSON', value: 'json' },
         // Include as many as you want (https://lucidar.me/en/web-dev/list-of-supported-languages-by-prism/)
       ],
       defaultValue: 'typescript',

@@ -17,7 +17,7 @@ export const Code = ({ code, language = '', filename }: Props) => {
       {({ getLineProps, getTokenProps, tokens }) => {
         return (
           <pre className="bg-black/80 pb-8 my-2 text-xs rounded-md overflow-x-auto text-wrap max-h-[50vh] scroll-auto">
-            <TextEditorHeader code={code} filename={filename} />
+            <TextEditorHeader code={code} language={language} filename={filename} />
 
             {tokens.map((line, i) => (
               <div key={i} {...getLineProps({ className: 'table-row', line })} className="px-4">

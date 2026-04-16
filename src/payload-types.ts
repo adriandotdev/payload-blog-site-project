@@ -225,6 +225,14 @@ export interface Blog {
     };
     [k: string]: unknown;
   };
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -404,6 +412,13 @@ export interface BlogsSelect<T extends boolean = true> {
   heroImage?: T;
   publishedAt?: T;
   Content?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -464,7 +479,9 @@ export interface CollectionsWidget {
  */
 export interface CodeBlock {
   filename?: string | null;
-  language?: ('typescript' | 'tsx' | 'javascript' | 'jsx' | 'css' | 'html' | 'python') | null;
+  language?:
+    | ('typescript' | 'tsx' | 'javascript' | 'jsx' | 'css' | 'html' | 'python' | 'docker' | 'bash' | 'json')
+    | null;
   code: string;
   id?: string | null;
   blockName?: string | null;

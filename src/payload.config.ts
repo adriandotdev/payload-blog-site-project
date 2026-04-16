@@ -5,6 +5,7 @@ import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
+import { seoPlugin } from '@payloadcms/plugin-seo'
 import { Blogs } from './collections/Blogs'
 import { Media } from './collections/Media'
 import { Users } from './collections/Users'
@@ -52,5 +53,13 @@ export default buildConfig({
     },
   }),
   sharp,
-  plugins: [],
+  plugins: [
+    seoPlugin({
+      collections: ['blogs'],
+      uploadsCollection: 'media',
+      generateTitle: ({ doc }) => `Adrian.Dev - ${doc.title}`,
+      generateDescription: ({ doc }) => doc.excerpt,
+      tabbedUI: true,
+    }),
+  ],
 })

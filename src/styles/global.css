@@ -29,6 +29,10 @@
   ol {
     @apply list-decimal list-inside mt-2 pl-8;
   }
+
+  code {
+    @apply font-mono text-sm bg-slate-100 dark:bg-slate-800 text-yellow-600 dark:text-yellow-400 px-1.5 py-0.5 rounded;
+  }
 }
 
 .dark body {

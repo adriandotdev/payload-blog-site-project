@@ -12,9 +12,10 @@ export const Blogs: CollectionConfig = {
   versions: {
     drafts: {
       autosave: {
-        interval: 800,
+        interval: 100,
       },
     },
+    maxPerDoc: 50,
   },
   hooks: {
     beforeValidate: [
@@ -108,10 +109,6 @@ export const Blogs: CollectionConfig = {
               required: true,
             },
           ],
-        },
-        {
-          label: 'SEO',
-          fields: [],
         },
       ],
     },
