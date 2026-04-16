@@ -7,13 +7,15 @@ type BlogListProp = {
 }
 
 export const BlogList = ({ posts }: BlogListProp) => {
+  console.log(posts)
   return (
     <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {posts.map((post) => {
         const image = typeof post.heroImage === 'object' ? post.heroImage : null
         const cardImage = image?.sizes?.card?.url ?? image?.url ?? null
         const alt = image?.alt ?? post.title ?? ''
-        const profilePhoto = ((post.author as User).profilePhoto as Media).sizes?.profile?.url
+        const profilePhoto = ((post.author as User).profilePhoto as Media)?.sizes?.profile?.url
+        const tag = post.tag
 
         return (
           <li key={post.id} className="group">
@@ -56,9 +58,9 @@ export const BlogList = ({ posts }: BlogListProp) => {
               </div>
               <div className="flex flex-col flex-1 p-5 gap-4">
                 {/* Badge */}
-                <div className="px-4 py-[0.5] w-max bg-blck bg-black/80 text-white rounded-lg drop-shadow-2xl border border-gray-100">
-                  <span className="text-[12px] font-medium">Learning</span>
-                </div>
+                <span className="inline-flex items-center px-3 py-1 w-max rounded-full text-[11px] font-semibold tracking-widest uppercase bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 ring-1 ring-inset ring-indigo-200 dark:ring-indigo-800">
+                  {tag}
+                </span>
                 <span className="text-[12px]">
                   Published{' '}
                   {new Date(post.publishedAt as string).toLocaleDateString('en-US', {
@@ -71,7 +73,7 @@ export const BlogList = ({ posts }: BlogListProp) => {
                   {post.title}
                 </h2>
 
-                <div className="flex  items-center gap-3 mt-4">
+                <div className="flex  items-center gap-3 mt-auto">
                   {profilePhoto && (
                     <Image
                       src={profilePhoto}

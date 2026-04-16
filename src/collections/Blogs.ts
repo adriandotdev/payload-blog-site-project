@@ -12,21 +12,34 @@ export const Blogs: CollectionConfig = {
   versions: {
     drafts: {
       autosave: {
-        interval: 100,
+        interval: 800,
       },
     },
     maxPerDoc: 50,
   },
   hooks: {
     beforeValidate: [
-      ({ data }) => {
-        if (data && data.title) {
+      ({ data, operation, originalDoc }) => {
+        if (data && data.title && (operation === 'create' || !originalDoc?.slug)) {
           const base = data.title
             .toLowerCase()
             .replace(/[^a-z0-9]+/g, '-')
             .replace(/^-|-$/g, '')
           const random = Math.floor(1000 + Math.random() * 9000)
           data.slug = `${base}-${random}`
+        } else if (
+          data &&
+          data.title &&
+          data.title !== originalDoc.title &&
+          operation === 'update'
+        ) {
+          const base = data.title
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-|-$/g, '')
+          const slugs = String(originalDoc.slug).split('-')
+
+          data.slug = `${base}-${slugs[slugs.length - 1]}`
         }
         return data
       },
@@ -66,6 +79,29 @@ export const Blogs: CollectionConfig = {
               required: true,
               unique: true,
               index: true,
+              admin: {
+                description:
+                  'Auto-generated from the title — defaults to "[Untitled]" until the title is updated. Feel free to change it.',
+              },
+            },
+            {
+              type: 'select',
+              options: [
+                {
+                  label: 'Travel',
+                  value: 'travel',
+                },
+                {
+                  label: 'Learning',
+                  value: 'learning',
+                },
+                {
+                  label: 'Food',
+                  value: 'food',
+                },
+              ],
+              name: 'tag',
+              required: true,
             },
             {
               type: 'relationship',

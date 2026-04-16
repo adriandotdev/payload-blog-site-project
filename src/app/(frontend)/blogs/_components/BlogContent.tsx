@@ -14,7 +14,7 @@ export const BlogContent = ({ blog }: { blog: Blog }) => {
       </div>
     )
 
-  const profilePhoto = ((blog.author as User).profilePhoto as Media).sizes?.profile?.url
+  const profilePhoto = ((blog.author as User).profilePhoto as Media)?.sizes?.profile?.url
   return (
     <div className="blog-content flex justify-center px-8 py-12 flex-col items-center">
       {blog?.heroImage && (

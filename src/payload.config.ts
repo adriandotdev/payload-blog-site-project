@@ -26,9 +26,28 @@ export default buildConfig({
       },
     },
     livePreview: {
-      url: ({ req, data, collectionConfig, locale }) =>
-        `${req.protocol}//${req.host}/blogs/draft/${data.slug}`, // Localization query param
+      url: ({ data }) => `${process.env.NEXT_PUBLIC_SERVER_URL}/blogs/draft/${data.slug}`, // Localization query param
       collections: ['blogs'],
+      breakpoints: [
+        {
+          label: 'Mobile',
+          name: 'mobile',
+          width: 375,
+          height: 667,
+        },
+        {
+          label: 'Tablet',
+          name: 'tablet',
+          width: 768,
+          height: 1024,
+        },
+        {
+          label: 'Desktop',
+          name: 'desktop',
+          width: 1440,
+          height: 900,
+        },
+      ],
     },
     meta: {
       titleSuffix: '- Adrian.Dev',

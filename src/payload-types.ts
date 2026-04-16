@@ -206,7 +206,11 @@ export interface Media {
 export interface Blog {
   id: number;
   title: string;
+  /**
+   * Auto-generated from the title — defaults to "[Untitled]" until the title is updated. Feel free to change it.
+   */
   slug: string;
+  tag: 'travel' | 'learning' | 'food';
   author: number | User;
   heroImage?: (number | null) | Media;
   publishedAt?: string | null;
@@ -408,6 +412,7 @@ export interface MediaSelect<T extends boolean = true> {
 export interface BlogsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
+  tag?: T;
   author?: T;
   heroImage?: T;
   publishedAt?: T;

@@ -23,12 +23,6 @@ export default function LayoutHeader() {
             </Link>
             <div className="pointer-events-none relative top-8 group-hover:top-0 transition-all duration-300 bg-yellow-500 h-1 rounded-md opacity-0 group-hover:opacity-100" />
           </div>
-          <div className="group">
-            <Link href="/login" className="group-hover:text-yellow-500">
-              Login
-            </Link>
-            <div className="pointer-events-none relative top-8 group-hover:top-0 transition-all duration-300 bg-yellow-500 h-1 rounded-md opacity-0 group-hover:opacity-100" />
-          </div>
           <DarkModeToggle />
         </nav>
       </div>
