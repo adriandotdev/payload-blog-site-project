@@ -23,9 +23,7 @@ export async function generateMetadata({
   const blog = result.docs[0]
   if (!blog) return {}
 
-  const heroUrl = blog.heroImage
-    ? ((blog.heroImage as Media).sizes?.hero?.url ?? (blog.heroImage as Media).url)
-    : undefined
+  const heroUrl = blog.heroImage ? (blog.heroImage as Media).url : undefined
 
   return {
     title: blog.title,

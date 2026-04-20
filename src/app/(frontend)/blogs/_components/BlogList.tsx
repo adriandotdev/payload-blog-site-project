@@ -12,9 +12,9 @@ export const BlogList = ({ posts }: BlogListProp) => {
     <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {posts.map((post) => {
         const image = typeof post.heroImage === 'object' ? post.heroImage : null
-        const cardImage = image?.sizes?.card?.url ?? image?.url ?? null
+        const cardImage = image?.url ?? null
         const alt = image?.alt ?? post.title ?? ''
-        const profilePhoto = ((post.author as User).profilePhoto as Media)?.sizes?.profile?.url
+        const profilePhoto = ((post.author as User).profilePhoto as Media).url
         const tag = post.tag
 
         return (
