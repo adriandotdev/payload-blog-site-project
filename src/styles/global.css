@@ -3,6 +3,8 @@
 
 @theme {
   --font-poppins: 'Poppins', sans-serif;
+  --font-aboreto: var(--font-aboreto);
+  --font-montserrat: var(--font-montserrat);
 }
 
 .rich-text {
