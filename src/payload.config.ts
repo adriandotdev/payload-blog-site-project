@@ -9,6 +9,7 @@ import { seoPlugin } from '@payloadcms/plugin-seo'
 import { s3Storage } from '@payloadcms/storage-s3'
 import { Blogs } from './collections/Blogs'
 import { Media } from './collections/Media'
+import { Pages } from './collections/Pages'
 import { Users } from './collections/Users'
 
 const filename = fileURLToPath(import.meta.url)
@@ -61,7 +62,7 @@ export default buildConfig({
       ],
     },
   },
-  collections: [Users, Media, Blogs],
+  collections: [Users, Media, Blogs, Pages],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
