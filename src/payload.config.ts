@@ -6,6 +6,7 @@ import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
 import { seoPlugin } from '@payloadcms/plugin-seo'
+import { s3Storage } from '@payloadcms/storage-s3'
 import { Blogs } from './collections/Blogs'
 import { Media } from './collections/Media'
 import { Users } from './collections/Users'
@@ -79,6 +80,19 @@ export default buildConfig({
       generateTitle: ({ doc }) => `Adrian.Dev - ${doc.title}`,
       generateDescription: ({ doc }) => doc.excerpt,
       tabbedUI: true,
+    }),
+    s3Storage({
+      collections: {
+        media: true,
+      },
+      bucket: process.env.S3_BUCKET!,
+      config: {
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY!,
+          secretAccessKey: process.env.S3_SECRET_KEY!,
+        },
+        region: process.env.S3_REGION,
+      },
     }),
   ],
 })

@@ -13,31 +13,36 @@ export const Media: CollectionConfig = {
     },
   ],
   upload: {
-    imageSizes: [
-      {
-        name: 'thumbnail',
-        width: 300,
-        height: 300,
-        position: 'centre',
-      },
-      {
-        name: 'card',
-        width: 600,
-        height: 400,
-        position: 'centre',
-      },
-      {
-        name: 'hero',
-        width: 1200,
-        height: 600,
-        position: 'centre',
-      },
-      {
-        name: 'profile',
-        width: 144,
-        height: 144,
-        position: 'centre',
-      },
-    ],
+    imageSizes: [],
+    focalPoint: true,
   },
+  // upload: {
+  //   imageSizes: [
+  //     {
+  //       name: 'thumbnail',
+  //       width: 300,
+  //       height: 300,
+  //       position: 'centre',
+
+  //     },
+  //     {
+  //       name: 'card',
+  //       width: 600,
+  //       height: 400,
+  //       position: 'centre',
+  //     },
+  //     {
+  //       name: 'hero',
+  //       width: 1200,
+  //       height: 600,
+  //       position: 'centre',
+  //     },
+  //     {
+  //       name: 'profile',
+  //       width: 144,
+  //       height: 144,
+  //       position: 'centre',
+  //     },
+  //   ],
+  // },
 }

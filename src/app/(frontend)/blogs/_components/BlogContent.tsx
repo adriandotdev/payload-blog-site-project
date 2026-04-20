@@ -14,16 +14,24 @@ export const BlogContent = ({ blog }: { blog: Blog }) => {
       </div>
     )
 
-  const profilePhoto = ((blog.author as User).profilePhoto as Media)?.sizes?.profile?.url
+  const profilePhoto = ((blog.author as User).profilePhoto as Media).url
+
+  const heroImage = blog.heroImage as Media
+
   return (
     <div className="blog-content flex justify-center px-8 py-12 flex-col items-center">
       {blog?.heroImage && (
-        <img
-          src={
-            (blog.heroImage as Media).sizes?.hero?.url ?? ((blog.heroImage as Media).url as string)
-          }
-          className="w-full max-w-4xl"
-        />
+        <div className="relative w-full h-[500px] max-w-5xl">
+          <Image
+            src={heroImage.url as string}
+            alt=""
+            fill
+            className="object-cover"
+            style={{
+              objectPosition: `${heroImage.focalX ?? 50}% ${heroImage.focalY ?? 50}%`,
+            }}
+          />
+        </div>
       )}
       <div className="max-w-2xl mt-8">
         <div>
